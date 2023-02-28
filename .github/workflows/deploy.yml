@@ -1,0 +1,11 @@
+on:
+  push:
+    tags:        
+      - '*'
+
+jobs:
+  release_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo ${{ github.ref_name }}
