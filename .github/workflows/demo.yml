@@ -1,0 +1,12 @@
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  release_workflow:
+    if: github.repository == 'octo-org/octo-repo-prod'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo ${{ github.ref_name }}
