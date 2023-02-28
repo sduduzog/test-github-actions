@@ -1,0 +1,23 @@
+on:
+  workflow_dispatch:
+
+permissions: write-all
+
+jobs:
+  pre_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: semver
+        uses: ietf-tools/semver-action@v1
+        with:
+          token: ${{ github.token }}
+          branch: develop
+
+      - uses: hoangvvo/gitflow-workflow-action@0.2.4
+        with:
+          develop_branch: develop
+          main_branch: main
+          version: ${{ steps.semver.outputs.next }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

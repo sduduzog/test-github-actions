@@ -1,0 +1,20 @@
+
+on:
+  pull_request:
+    types:
+      - opened
+      - closed
+      - labeled
+
+permissions: write-all
+
+jobs:
+  release_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hoangvvo/gitflow-workflow-action@0.2.4
+        with:
+          develop_branch: develop
+          main_branch: main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
