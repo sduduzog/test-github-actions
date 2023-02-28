@@ -1,6 +1,7 @@
 on:
-  release:
-    types: [created]
+  workflow_run:
+    workflows: ["Post release"]
+    types: [completed]
 
 jobs:
   release_workflow:
