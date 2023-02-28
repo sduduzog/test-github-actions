@@ -12,7 +12,6 @@ jobs:
         uses: ietf-tools/semver-action@v1
         with:
           token: ${{ github.token }}
-          branch: develop
 
       - uses: hoangvvo/gitflow-workflow-action@0.2.4
         with:
